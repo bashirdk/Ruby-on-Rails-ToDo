@@ -5,9 +5,12 @@
 			<h1>To-Do Tracking App</h1>
 
 			<%= link_to "<button>Add New Task</button>".html_safe, new_todo_path %>
-
-			<p id="notice"><%= notice %></p>
-			
+      <br><br>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+              <%= value %>
+        </div>
+      <% end %>
 			<div class="row todo-list">
 			<% @todos.each do |todo| %>
 				<div class="col-md-12 todo-item border">

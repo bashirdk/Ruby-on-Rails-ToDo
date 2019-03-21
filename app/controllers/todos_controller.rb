@@ -5,7 +5,7 @@ class TodosController < ApplicationController
   # GET /todos.json
   def index
     if params[:task] == 'done'  
-      @todos = Todo.where(done: true) 
+      @todos = Todo.where(done: true)
     elsif params[:task] == 'open' 
       @todos = Todo.where(done: 'false')
     else
@@ -30,15 +30,25 @@ class TodosController < ApplicationController
   # POST /todos
   # POST /todos.json
   def create
-    @todo = Todo.new(todo_params, :done => false)
+    @todo = Todo.new(todo_params)
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to todos_path, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
+        format.html { 
+          redirect_to todos_path, 
+          :flash => { :success  => 'Task was successfully created.' }
+        }
+        format.json { 
+          render :show, 
+          status: :created, 
+          location: @todo 
+        }
       else
         format.html { render :new }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
+        format.json { 
+          render json: @todo.errors, 
+          status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -48,7 +58,8 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to todos_path, notice: 'Task was successfully updated.' }
+        format.html { redirect_to todos_path, :flash => { :info  => 'Task was successfully updated.' } }
+
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }
@@ -62,9 +73,24 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Task was successfully deleted.' }
+      format.html { 
+        redirect_to todos_url, 
+        :flash => { :danger  => 'Task was successfully deleted.' } 
+      }
       format.json { head :no_content }
     end
+  end
+
+  def complete_task
+    @todo.update(done: true)
+    respond_to do |format|
+      format.html { 
+        redirect_to todos_url, 
+        :flash => { :danger  => 'Task was successfully deleted.' } 
+      } 
+      format.json { head :no_content }
+    end
+    render 'index'
   end
 
   private
