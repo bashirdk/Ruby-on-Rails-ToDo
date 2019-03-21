@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $border-color: lightgray;
+$blue: #337ab7;
+$green: lighten(green, 10%);
 
 .todo {
 	margin: 25px;
@@ -12,18 +14,42 @@ $border-color: lightgray;
 }
 
 a:visited {
-	color: #337ab7;
+	color: $blue;
 }
 a:hover {
 	background: none;
 }
 
-.delete a{
-	color: red;
-	transition: 0.3s;
+a {
+	transition: 0.3s all;
 }
-.delete a:hover {
-	color: darkred;
+
+.delete a {
+	color: red;
+ 
+	&:hover {
+		color: darkred;
+	}
+}
+
+.edit {
+	.glyphicon {
+		&-unchecked {
+			color: $blue;
+			&:hover {
+				color: darken($blue, 10%);
+			}
+		}
+		&-ok {
+			color: $green;
+			&:hover {
+				color: darken($green, 10%)
+			}
+		}
+	}
+}
+.edit a:hover{
+	color: darkgreen;
 }
 
 @mixin border-bottom($size: null) {
