@@ -1,28 +1,32 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Todos</h1>
+<div class="container">
+	<div class="row">
+    	<div class="col-md-6 col-md-offset-3 text-center">
+			<h1>To-Do Tracking App</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+			<%= link_to "<button>Add New Task</button>".html_safe, new_todo_path %>
 
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.task %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td> 
-          <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, todo, method: :delete, data: { confirm: 'Are you sure you want to delete the task?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+			<p id="notice"><%= notice %></p>
+			
+			<div class="row todo-list">
+			<% @todos.each do |todo| %>
+				<div class="col-md-12 todo border">
+					<div class="row">
+						<div class="col-md-1 edit">
+							<%= link_to 'Edit', edit_todo_path(todo) %>
+						</div>
+						<div class="col-md-10 text-left desc">
+							<%= todo.task %>
+						</div>
+						<div class="col-md-1 delete">
+							<%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, todo, method: :delete, data: { confirm: 'Are you sure you want to delete the task?' } %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		  	</div>
+		</div>
+	</div>
+</div>
 
 <br>
-
-<%= link_to "<button>Add New Task</button>".html_safe, new_todo_path %>

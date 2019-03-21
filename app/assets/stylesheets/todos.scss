@@ -1,3 +1,51 @@
 // Place all the styles related to the todos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$border-color: black;
+
+a:visited {
+	color: #337ab7;
+}
+a:hover {
+	background: none;
+}
+
+.delete a:hover {
+	transform: scaleX(1.25);
+	color: red !important; 
+}
+
+@mixin border-bottom($size: null) {
+	@if $size {
+		border-bottom: $size solid $border-color;
+	} @else {
+		border-bottom: none;
+	}
+}
+
+.border {
+	border: 1px solid $border-color; 
+}
+
+.todo {
+	@include border-bottom();
+}
+
+.todo-list {
+	@include border-bottom(1px);
+}
+
+.todo .edit {
+	border-right: 1px solid $border-color;
+	padding: 1em;
+}
+
+.todo .desc {
+	border-right: 1px solid $border-color;
+	padding: 1em;
+}
+
+.todo .delete {
+	padding: 1em;
+}
