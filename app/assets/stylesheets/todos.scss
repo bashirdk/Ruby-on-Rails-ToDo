@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$border-color: black;
+$border-color: lightgray;
+
+.todo {
+	margin: 10px;
+	border: 1px solid $border-color;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px 0 $border-color;
+}
 
 a:visited {
 	color: #337ab7;
@@ -11,9 +18,11 @@ a:hover {
 	background: none;
 }
 
+.delete a{
+	color: red;
+}
 .delete a:hover {
-	transform: scaleX(1.25);
-	color: red !important; 
+	color: darkred;
 }
 
 @mixin border-bottom($size: null) {
@@ -25,10 +34,11 @@ a:hover {
 }
 
 .border {
-	border: 1px solid $border-color; 
+	border-top: 1px solid $border-color; 
+	border-bottom: 1px solid $border-color; 
 }
 
-.todo {
+.todo-item {
 	@include border-bottom();
 }
 
@@ -36,16 +46,16 @@ a:hover {
 	@include border-bottom(1px);
 }
 
-.todo .edit {
-	border-right: 1px solid $border-color;
+.todo-item .edit {
 	padding: 1em;
 }
 
-.todo .desc {
-	border-right: 1px solid $border-color;
+.todo-item .desc {
+	border: solid $border-color;
+	border-width: 0 1px;
 	padding: 1em;
 }
 
-.todo .delete {
+.todo-item .delete {
 	padding: 1em;
 }
