@@ -14,9 +14,10 @@
     <% @todos.each do |todo| %>
       <tr>
         <td><%= todo.task %></td>
-        <td><%= link_to 'Show', todo %></td>
         <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> 
+          <%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, todo, method: :delete, data: { confirm: 'Are you sure you want to delete the task?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Todo', new_todo_path %>
+<%= link_to "<button>Add New Task</button>".html_safe, new_todo_path %>
