@@ -4,7 +4,7 @@
     	<div class="col-md-6 col-md-offset-3 text-center todo">
 			<h1>To-Do Tracking App</h1>
 
-			<%= link_to "<button>Add New Task</button>".html_safe, new_todo_path %>
+			<%= link_to "<button class='btn btn-success'>Add New Task</button>".html_safe, new_todo_path %>
       <br><br>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
@@ -38,13 +38,13 @@
 		  	</div>			
 			<div class="row" style="padding: 1em">
         <div class="col-md-4"> 
-        <%= link_to "All Tasks", todos_path %>
+        <%= link_to "<button class='btn btn-info'>All Tasks</button>".html_safe, todos_path %>
         </div>
         <div class="col-md-4">
-        <%= link_to "Open Tasks", task:"open" %>
+        <%= link_to "<button class='btn btn-info'>Open Tasks</button>".html_safe, task:"open" %>
         </div>
         <div class="col-md-4">
-        <%= link_to "Completed Tasks", task:"done" %>
+        <%= link_to "<button class='btn btn-info'>Completed Tasks</button>".html_safe, task:"done" %>
         </div>				
 			</div>
 		</div>
