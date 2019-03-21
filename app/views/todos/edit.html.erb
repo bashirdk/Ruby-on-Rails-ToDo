@@ -1,6 +1,12 @@
-<h1>Editing Todo</h1>
+<div class="container">
+	<div class="row">
+    	<div class="col-md-6 col-md-offset-3 text-center todo">
 
-<%= render 'form', todo: @todo %>
-
-<%= link_to 'Show', @todo %> |
-<%= link_to 'Back', todos_path %>
+        <h1>Edit the Task</h1>
+        <%= render 'form', todo: @todo %>
+        <%= link_to 'Back', todos_path %>
+        
+        <br><br>
+      </div>
+  </div>
+</div>
