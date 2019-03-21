@@ -14,9 +14,9 @@
 					<div class="row">
 						<div class="col-md-1 edit">
 							<% if todo.done == false %>
-								<%= link_to "<span class='glyphicon glyphicon-unchecked'></span>".html_safe, edit_todo_path(todo) %>
+								<%= link_to "<span class='glyphicon glyphicon-unchecked'></span>".html_safe %>
 							<% else %>
-								<%= link_to "<span class='glyphicon glyphicon-ok'></span>".html_safe, edit_todo_path(todo) %>
+								<%= link_to "<span class='glyphicon glyphicon-ok'></span>".html_safe %>
 							<% end %>
 						</div>
 						<div class="col-md-10 text-left desc">
@@ -32,8 +32,18 @@
 					</div>
 				</div>
 			<% end %>
-		  	</div>
-        DELETE ALL ITEMS
+		  	</div>			
+			<div class="row" style="padding: 1em">
+        <div class="col-md-4"> 
+        <%= link_to "All Tasks", todos_path %>
+        </div>
+        <div class="col-md-4">
+        <%= link_to "Open Tasks", task:"open" %>
+        </div>
+        <div class="col-md-4">
+        <%= link_to "Completed Tasks", task:"done" %>
+        </div>				
+			</div>
 		</div>
 	</div>
 </div>

@@ -4,7 +4,13 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    if params[:task] == 'done'  
+      @todos = Todo.where(done: true) 
+    elsif params[:task] == 'open' 
+      @todos = Todo.where(done: 'false')
+    else
+      @todos = Todo.all 
+    end
   end
 
   # GET /todos/1
@@ -24,7 +30,7 @@ class TodosController < ApplicationController
   # POST /todos
   # POST /todos.json
   def create
-    @todo = Todo.new(todo_params)
+    @todo = Todo.new(todo_params, :done => false)
 
     respond_to do |format|
       if @todo.save
