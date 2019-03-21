@@ -5,7 +5,7 @@
 $border-color: lightgray;
 
 .todo {
-	margin: 10px;
+	margin: 25px;
 	border: 1px solid $border-color;
 	border-radius: 10px;
 	box-shadow: 0 2px 4px 0 $border-color;
@@ -20,6 +20,7 @@ a:hover {
 
 .delete a{
 	color: red;
+	transition: 0.3s;
 }
 .delete a:hover {
 	color: darkred;
