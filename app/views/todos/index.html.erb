@@ -17,9 +17,9 @@
 					<div class="row">
 						<div class="col-md-1 edit">
 							<% if todo.done == false %>
-								<%= link_to "<span class='glyphicon glyphicon-unchecked'></span>".html_safe %>
+								<%= link_to "<span class='glyphicon glyphicon-unchecked'></span>".html_safe, complete_path(todo) %>
 							<% else %>
-								<%= link_to "<span class='glyphicon glyphicon-ok'></span>".html_safe %>
+								<%= link_to "<span class='glyphicon glyphicon-ok'></span>".html_safe, incomplete_path(todo) %>
 							<% end %>
 						</div>
 						<div class="col-md-10 text-left desc">

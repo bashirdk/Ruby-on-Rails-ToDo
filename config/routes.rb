@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :todos
 
+  get 'complete/:id', to: 'todos#complete', as: 'complete'
+
+  get 'incomplete/:id', to: 'todos#incomplete', as: 'incomplete'
+
   root to: "todos#index"
 
 end

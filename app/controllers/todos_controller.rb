@@ -7,7 +7,7 @@ class TodosController < ApplicationController
     if params[:task] == 'done'  
       @todos = Todo.where(done: true)
     elsif params[:task] == 'open' 
-      @todos = Todo.where(done: 'false')
+      @todos = Todo.where(done: false)
     else
       @todos = Todo.all 
     end
@@ -81,16 +81,28 @@ class TodosController < ApplicationController
     end
   end
 
-  def complete_task
+  def complete
+    @todo = Todo.find(params[:id])
     @todo.update(done: true)
     respond_to do |format|
       format.html { 
-        redirect_to todos_url, 
-        :flash => { :danger  => 'Task was successfully deleted.' } 
+        redirect_to todos_path, 
+        :flash => { :success  => 'Task was successfully closed.' } 
       } 
       format.json { head :no_content }
     end
-    render 'index'
+  end
+
+  def incomplete
+    @todo = Todo.find(params[:id])
+    @todo.update(done: false)
+    respond_to do |format|
+      format.html { 
+        redirect_to todos_path, 
+        :flash => { :info  => 'Task was successfully re-opened.' } 
+      } 
+      format.json { head :no_content }
+    end
   end
 
   private
