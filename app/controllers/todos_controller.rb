@@ -39,21 +39,11 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { 
-          redirect_to todos_path, 
-          :flash => { :success  => 'Task was successfully created.' }
-        }
-        format.json { 
-          render :show, 
-          status: :created, 
-          location: @todo 
-        }
+        format.html { redirect_to todos_path, :flash => { :success  => 'Task was successfully created.' } }
+        format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new }
-        format.json { 
-          render json: @todo.errors, 
-          status: :unprocessable_entity 
-        }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +54,6 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.update(todo_params)
         format.html { redirect_to todos_path, :flash => { :info  => 'Task was successfully updated.' } }
-
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }
@@ -78,10 +67,7 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { 
-        redirect_to todos_url, 
-        :flash => { :danger  => 'Task was successfully deleted.' } 
-      }
+      format.html { redirect_to todos_url, :flash => { :danger  => 'Task was successfully deleted.' } }
       format.json { head :no_content }
     end
   end
@@ -92,11 +78,7 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     @todo.update(done: true)
     respond_to do |format|
-      format.html { 
-        redirect_to todos_path, 
-        :flash => { :success  => 'Task was successfully closed.' } 
-        # flash is a general purpose map like a local variable map
-      } 
+      format.html { redirect_to todos_path, :flash => { :success  => 'Task was successfully closed.' } } # flash is a general purpose map like a local variable map 
       format.json { head :no_content }
     end
   end
@@ -105,10 +87,7 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     @todo.update(done: false)
     respond_to do |format|
-      format.html { 
-        redirect_to todos_path, 
-        :flash => { :info  => 'Task was successfully re-opened.' } 
-      } 
+      format.html { redirect_to todos_path, :flash => { :info  => 'Task was successfully re-opened.' } } 
       format.json { head :no_content }
     end
   end
