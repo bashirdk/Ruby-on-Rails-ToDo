@@ -1,7 +1,7 @@
 
 <div class="container">
 	<div class="row">
-    	<div class="col-md-6 col-md-offset-3 text-center todo">
+    	<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 text-center todo">
 			<h1>To-Do Tracking App</h1>
 
 			<%= link_to "<button class='btn btn-success'>Add New Task</button>".html_safe, new_todo_path %>
@@ -13,23 +13,23 @@
       <% end %>
 			<div class="row todo-list">
 			<% @todos.each do |todo| %>
-				<div class="col-md-12 todo-item border">
+				<div class="col-sm-12 todo-item border">
 					<div class="row">
-						<div class="col-md-1 edit">
+						<div class="col-xs-2 col-sm-2 col-md-1 edit">
 							<% if todo.done == false %>
 								<%= link_to "<span class='glyphicon glyphicon-unchecked'></span>".html_safe, complete_path(todo) %>
 							<% else %>
 								<%= link_to "<span class='glyphicon glyphicon-ok'></span>".html_safe, incomplete_path(todo) %>
 							<% end %>
 						</div>
-						<div class="col-md-10 text-left desc">
+						<div class="col-xs-8 col-sm-8 col-md-10 text-left desc">
 							<% if todo.done == false %>
             			 	 	<%= link_to todo.task, edit_todo_path(todo) %>
 							<% else %>
             			  		<strike><%= todo.task %></strike>
 							<% end %>
 						</div>
-						<div class="col-md-1 delete"> 
+						<div class="col-xs-2 col-sm-2 col-md-1 delete"> 
 							<%= link_to "<span class='glyphicon glyphicon-trash'></span>".html_safe, todo, method: :delete, data: { confirm: 'Are you sure you want to delete the task?' } %>
 						</div>
 					</div>
@@ -37,14 +37,14 @@
 			<% end %>
 		  	</div>			
 			<div class="row" style="padding: 1em">
-        <div class="col-md-4"> 
-        <%= link_to "<button class='btn btn-info'>All Tasks</button>".html_safe, todos_path %>
+        <div class="col-xs-12 col-sm-4"> 
+          <%= link_to "<button class='btn btn-info'>All Tasks</button>".html_safe, todos_path %>
         </div>
-        <div class="col-md-4">
-        <%= link_to "<button class='btn btn-info'>Open Tasks</button>".html_safe, task:"open" %>
+        <div class="col-xs-6 col-sm-4"> 
+          <%= link_to "<button class='btn btn-info'>Open Tasks</button>".html_safe, task:"open" %>
         </div>
-        <div class="col-md-4">
-        <%= link_to "<button class='btn btn-info'>Completed Tasks</button>".html_safe, task:"done" %>
+        <div class="col-xs-6 col-sm-4"> 
+          <%= link_to "<button class='btn btn-info'>Completed Tasks</button>".html_safe, task:"done" %>
         </div>				
 			</div>
 		</div>

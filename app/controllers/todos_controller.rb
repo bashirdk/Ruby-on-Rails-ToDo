@@ -3,12 +3,17 @@ class TodosController < ApplicationController
 
   # GET /todos
   # GET /todos.json
+  # GET /todos?task=done
+  # GET /todos?task=open
   def index
     if params[:task] == 'done'  
+      # SELECT * FROM todos WHERE done = true
       @todos = Todo.where(done: true)
     elsif params[:task] == 'open' 
+      # SELECT * FROM todos WHERE done = false 
       @todos = Todo.where(done: false)
     else
+      # SELECT * FROM todos 
       @todos = Todo.all 
     end
   end
@@ -81,13 +86,16 @@ class TodosController < ApplicationController
     end
   end
 
+  # GET /complete/:id 
   def complete
+    # SELECT * FROM todos WHERE id = :id 
     @todo = Todo.find(params[:id])
     @todo.update(done: true)
     respond_to do |format|
       format.html { 
         redirect_to todos_path, 
         :flash => { :success  => 'Task was successfully closed.' } 
+        # flash is a general purpose map like a local variable map
       } 
       format.json { head :no_content }
     end
