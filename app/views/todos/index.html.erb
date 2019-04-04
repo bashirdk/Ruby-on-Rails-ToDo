@@ -24,9 +24,10 @@
 						</div>
 						<div class="col-xs-8 col-sm-8 col-md-10 text-left desc">
 							<% if todo.done == false %>
-            		<%= link_to todo.task, edit_todo_path(todo) %>
+            		<%= link_to todo.task, edit_todo_path(todo) %> <br>
+								<%= todo.task_description %>
 							<% else %>
-            		<strike><%= todo.task %></strike>
+            		<strike><%= todo.task %> <br> <%= todo.task_description %></strike>
 							<% end %>
 						</div>
 						<div class="col-xs-2 col-sm-2 col-md-1 delete"> 
